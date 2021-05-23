@@ -14,7 +14,7 @@ public class Cliente implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
     private String nome;
     private Date dataDeNascimento;
     private String cpfOuCnpj;
@@ -29,7 +29,7 @@ public class Cliente implements Serializable {
 
     }
 
-    public Cliente(Long id, String nome, Date dataDeNascimento, String cpfOuCnpj, String email, String contato, String endereco, Veiculo veiculo) {
+    public Cliente(Integer id, String nome, Date dataDeNascimento, String cpfOuCnpj, String email, String contato, String endereco, Veiculo veiculo) {
         this.id = id;
         this.nome = nome;
         this.dataDeNascimento = dataDeNascimento;
@@ -40,11 +40,11 @@ public class Cliente implements Serializable {
         this.veiculo = veiculo;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

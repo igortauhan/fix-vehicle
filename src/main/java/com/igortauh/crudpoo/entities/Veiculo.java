@@ -13,7 +13,7 @@ public class Veiculo implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
     private Integer quantidade;
     private String modelo;
     private Integer ano;
@@ -26,7 +26,7 @@ public class Veiculo implements Serializable {
 
     }
 
-    public Veiculo(Long id, Integer quantidade, String modelo, Integer ano, String cor, Double kilometragem, Double valor, String placa) {
+    public Veiculo(Integer id, Integer quantidade, String modelo, Integer ano, String cor, Double kilometragem, Double valor, String placa) {
         this.id = id;
         this.quantidade = quantidade;
         this.modelo = modelo;
@@ -37,11 +37,11 @@ public class Veiculo implements Serializable {
         this.placa = placa;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
