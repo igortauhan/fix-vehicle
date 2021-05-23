@@ -18,15 +18,15 @@ public class Veiculo implements Serializable {
     private String modelo;
     private Integer ano;
     private String cor;
-    private Float kilometragem;
-    private Float valor;
+    private Double kilometragem;
+    private Double valor;
     private String placa;
 
     public Veiculo() {
 
     }
 
-    public Veiculo(Long id, Integer quantidade, String modelo, Integer ano, String cor, Float kilometragem, Float valor, String placa) {
+    public Veiculo(Long id, Integer quantidade, String modelo, Integer ano, String cor, Double kilometragem, Double valor, String placa) {
         this.id = id;
         this.quantidade = quantidade;
         this.modelo = modelo;
@@ -77,19 +77,19 @@ public class Veiculo implements Serializable {
         this.cor = cor;
     }
 
-    public Float getKilometragem() {
+    public Double getKilometragem() {
         return kilometragem;
     }
 
-    public void setKilometragem(Float kilometragem) {
+    public void setKilometragem(Double kilometragem) {
         this.kilometragem = kilometragem;
     }
 
-    public Float getValor() {
+    public Double getValor() {
         return valor;
     }
 
-    public void setValor(Float valor) {
+    public void setValor(Double valor) {
         this.valor = valor;
     }
 
