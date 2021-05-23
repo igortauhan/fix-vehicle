@@ -27,4 +27,9 @@ public class VeiculoService {
         find(obj.getId());
         return veiculoRepository.save(obj);
     }
+
+    public void delete(Long id) {
+        find(id);
+        veiculoRepository.deleteById(id);
+    }
 }
