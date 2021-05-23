@@ -13,8 +13,13 @@ public class VeiculoService {
     @Autowired
     VeiculoRepository veiculoRepository;
 
-    public Veiculo find(Integer id) {
+    public Veiculo find(Long id) {
         Optional<Veiculo> obj = veiculoRepository.findById(id);
         return obj.orElse(null);
+    }
+
+    public Veiculo insert(Veiculo obj) {
+        obj.setId(null);
+        return veiculoRepository.save(obj);
     }
 }
