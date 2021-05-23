@@ -31,4 +31,11 @@ public class VeiculoController {
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
         return ResponseEntity.created(uri).build();
     }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    public ResponseEntity<Void> update(@RequestBody Veiculo obj, @PathVariable Long id) {
+        obj.setId(id);
+        veiculoService.update(obj);
+        return ResponseEntity.noContent().build();
+    }
 }

@@ -22,4 +22,9 @@ public class VeiculoService {
         obj.setId(null);
         return veiculoRepository.save(obj);
     }
+
+    public Veiculo update(Veiculo obj) {
+        find(obj.getId());
+        return veiculoRepository.save(obj);
+    }
 }
