@@ -34,8 +34,10 @@ public class CrudpooApplication implements CommandLineRunner {
 
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
-		Cliente c1 = new Cliente(null, "João", sdf.parse("30/05/2001") , "12345678910", "joao@email.com", "00999999999", "Rua principal", null);
-		Cliente c2 = new Cliente(null, "Maria", sdf.parse("06/06/2001"), "12335678910", "maria@email.com", "00999999990", "Rua Principal 2", null);
+		Cliente c1 = new Cliente(null, "João", sdf.parse("30/05/2001") , "12345678910", "joao@email.com", "00999999999", "Rua principal");
+		Cliente c2 = new Cliente(null, "Maria", sdf.parse("06/06/2001"), "12335678910", "maria@email.com", "00999999990", "Rua Principal 2");
+		c1.setVeiculo(v1);
+		c2.setVeiculo(v2);
 		clienteRepository.saveAll(Arrays.asList(c1, c2));
 	}
 }

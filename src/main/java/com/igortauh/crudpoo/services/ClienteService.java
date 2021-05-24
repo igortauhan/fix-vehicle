@@ -17,4 +17,10 @@ public class ClienteService {
         Optional<Cliente> obj = clienteRepository.findById(id);
         return obj.orElse(null);
     }
+
+    public Cliente insert(Cliente obj) {
+        obj.setId(null);
+        obj = clienteRepository.save(obj);
+        return obj;
+    }
 }

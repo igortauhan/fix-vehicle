@@ -2,10 +2,7 @@ package com.igortauh.crudpoo.entities;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -27,13 +24,15 @@ public class Cliente implements Serializable {
     private String endereco;
 
     //Associações
+    @ManyToOne
+    @JoinColumn(name = "carro_id")
     private Veiculo veiculo;
 
     public Cliente() {
 
     }
 
-    public Cliente(Long id, String nome, Date dataDeNascimento, String cpfOuCnpj, String email, String contato, String endereco, Veiculo veiculo) {
+    public Cliente(Long id, String nome, Date dataDeNascimento, String cpfOuCnpj, String email, String contato, String endereco) {
         this.id = id;
         this.nome = nome;
         this.dataDeNascimento = dataDeNascimento;
@@ -41,7 +40,6 @@ public class Cliente implements Serializable {
         this.email = email;
         this.contato = contato;
         this.endereco = endereco;
-        this.veiculo = veiculo;
     }
 
     public Long getId() {
