@@ -1,9 +1,20 @@
 package com.igortauh.crudpoo.services;
 
+import com.igortauh.crudpoo.entities.Cliente;
+import com.igortauh.crudpoo.repositories.ClienteRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class ClienteService {
 
-    
+    @Autowired
+    private ClienteRepository clienteRepository;
+
+    public Cliente find(Long id) {
+        Optional<Cliente> obj = clienteRepository.findById(id);
+        return obj.orElse(null);
+    }
 }

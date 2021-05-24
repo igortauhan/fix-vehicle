@@ -1,5 +1,7 @@
 package com.igortauh.crudpoo.entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,6 +18,8 @@ public class Cliente implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
+
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private Date dataDeNascimento;
     private String cpfOuCnpj;
     private String email;
