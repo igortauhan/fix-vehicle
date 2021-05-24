@@ -28,4 +28,9 @@ public class ClienteService {
         find(obj.getId());
         return clienteRepository.save(obj);
     }
+
+    public void delete(Long id) {
+        find(id);
+        clienteRepository.deleteById(id);
+    }
 }
