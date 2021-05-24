@@ -1,9 +1,8 @@
 package com.igortauh.crudpoo.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonInclude;
+
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
@@ -14,6 +13,9 @@ public class Veiculo implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @Transient
     private Integer quantidade;
     private String modelo;
     private Integer ano;
