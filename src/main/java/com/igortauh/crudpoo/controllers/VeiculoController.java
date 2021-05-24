@@ -35,7 +35,7 @@ public class VeiculoController {
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     public ResponseEntity<Void> update(@RequestBody Veiculo obj, @PathVariable Long id) {
         obj.setId(id);
-        veiculoService.update(obj);
+        obj = veiculoService.update(obj);
         return ResponseEntity.noContent().build();
     }
 

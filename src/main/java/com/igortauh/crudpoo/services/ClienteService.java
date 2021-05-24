@@ -23,4 +23,9 @@ public class ClienteService {
         obj = clienteRepository.save(obj);
         return obj;
     }
+
+    public Cliente update(Cliente obj) {
+        find(obj.getId());
+        return clienteRepository.save(obj);
+    }
 }
