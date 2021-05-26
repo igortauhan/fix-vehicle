@@ -1,19 +1,11 @@
-package com.igortauh.crudpoo.entities;
+package com.igortauh.crudpoo.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Date;
 
-@Entity
-@Table(name = "tb_clientes")
-public class Cliente implements Serializable {
+public class ClienteDTO {
 
-    private static final long serialVersionUID = 1L;
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
 
@@ -23,25 +15,10 @@ public class Cliente implements Serializable {
     private String email;
     private String contato;
     private String endereco;
+    private Long idCarro;
 
-    //Associações
-    @ManyToOne
-    @JoinColumn(name = "carro_id")
-    private Veiculo veiculo;
+    public ClienteDTO() {
 
-    public Cliente() {
-
-    }
-
-    public Cliente(Long id, String nome, Date dataDeNascimento, String cpfOuCnpj, String email, String contato, String endereco, Veiculo veiculo) {
-        this.id = id;
-        this.nome = nome;
-        this.dataDeNascimento = dataDeNascimento;
-        this.cpfOuCnpj = cpfOuCnpj;
-        this.email = email;
-        this.contato = contato;
-        this.endereco = endereco;
-        this.veiculo = veiculo;
     }
 
     public Long getId() {
@@ -92,19 +69,19 @@ public class Cliente implements Serializable {
         this.contato = contato;
     }
 
+    public Long getIdCarro() {
+        return idCarro;
+    }
+
+    public void setIdCarro(Long idCarro) {
+        this.idCarro = idCarro;
+    }
+
     public String getEndereco() {
         return endereco;
     }
 
     public void setEndereco(String endereco) {
         this.endereco = endereco;
-    }
-
-    public Veiculo getVeiculo() {
-        return veiculo;
-    }
-
-    public void setVeiculo(Veiculo veiculo) {
-        this.veiculo = veiculo;
     }
 }

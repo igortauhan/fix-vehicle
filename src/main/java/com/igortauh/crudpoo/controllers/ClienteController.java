@@ -1,5 +1,6 @@
 package com.igortauh.crudpoo.controllers;
 
+import com.igortauh.crudpoo.dto.ClienteDTO;
 import com.igortauh.crudpoo.entities.Cliente;
 import com.igortauh.crudpoo.services.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +24,8 @@ public class ClienteController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<Void> insert(@RequestBody Cliente obj) {
-        obj = clienteService.insert(obj);
+    public ResponseEntity<Void> insert(@RequestBody ClienteDTO objDto) {
+        Cliente obj = clienteService.insert(objDto);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
         return ResponseEntity.created(uri).build();
     }
