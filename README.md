@@ -1,2 +1,2 @@
 # crud_poo_trabalho
-Adaptação de um trabalho da faculadde feito por mim em Java para Springboot.
+Adaptação de um trabalho da faculade feito por mim em Java para Springboot.
