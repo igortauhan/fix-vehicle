@@ -31,9 +31,9 @@ public class ClienteController {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<Void> update(@PathVariable Long id, @RequestBody Cliente obj) {
-        obj.setId(id);
-        clienteService.update(obj);
+    public ResponseEntity<Void> update(@PathVariable Long id, @RequestBody ClienteDTO objDto) {
+        Cliente obj = clienteService.update(objDto);
+        System.out.println("\nE aqui tbm fica flinstons");
         return ResponseEntity.noContent().build();
     }
 
