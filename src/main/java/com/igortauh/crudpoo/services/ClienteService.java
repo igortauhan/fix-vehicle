@@ -35,7 +35,6 @@ public class ClienteService {
 
     public Cliente update(ClienteDTO objDto) {
         Veiculo veiculo = veiculoService.find(objDto.getIdCarro());
-        System.out.println(veiculo.getModelo() + "Chegou aqui");
         Cliente obj = new Cliente(objDto.getId(), objDto.getNome(), objDto.getDataDeNascimento(), objDto.getCpfOuCnpj(), objDto.getEmail(), objDto.getContato(), objDto.getEndereco(), veiculo);
         obj = clienteRepository.save(obj);
         return obj;
