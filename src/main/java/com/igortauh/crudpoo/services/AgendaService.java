@@ -17,4 +17,10 @@ public class AgendaService {
         Optional<Agenda> obj = agendaRepository.findById(id);
         return obj.orElse(null);
     }
+
+    public Agenda insert(Agenda obj) {
+        obj.setId(null);
+        obj = agendaRepository.save(obj);
+        return obj;
+    }
 }
