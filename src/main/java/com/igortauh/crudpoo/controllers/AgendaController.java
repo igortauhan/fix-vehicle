@@ -1,5 +1,6 @@
 package com.igortauh.crudpoo.controllers;
 
+import com.igortauh.crudpoo.dto.AgendaDTO;
 import com.igortauh.crudpoo.entities.Agenda;
 import com.igortauh.crudpoo.services.AgendaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +24,8 @@ public class AgendaController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<Void> insert(@RequestBody Agenda obj) {
-        obj = agendaService.insert(obj);
+    public ResponseEntity<Void> insert(@RequestBody AgendaDTO objDto) {
+        Agenda obj = agendaService.insert(objDto);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
         return ResponseEntity.created(uri).build();
     }
