@@ -29,4 +29,10 @@ public class AgendaController {
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
         return ResponseEntity.created(uri).build();
     }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    public ResponseEntity<Void> update(@RequestBody AgendaDTO objDto, @PathVariable Long id) {
+        Agenda obj = agendaService.update(objDto, id);
+        return ResponseEntity.noContent().build();
+    }
 }

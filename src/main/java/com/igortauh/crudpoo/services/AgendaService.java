@@ -33,4 +33,14 @@ public class AgendaService {
         obj = agendaRepository.save(obj);
         return obj;
     }
+
+    public Agenda update(AgendaDTO objDto, Long id) {
+        Cliente cliente = clienteService.find(objDto.getClienteId());
+        Agenda obj = new Agenda();
+        obj.setId(id);
+        obj.setDataDeAgendamento(objDto.getDataDeAgendamento());
+        obj.setCliente(cliente);
+        obj = agendaRepository.save(obj);
+        return obj;
+    }
 }
