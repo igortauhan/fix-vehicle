@@ -33,9 +33,17 @@ public class ClienteService {
         return obj;
     }
 
-    public Cliente update(ClienteDTO objDto) {
+    public Cliente update(ClienteDTO objDto, Long id) {
         Veiculo veiculo = veiculoService.find(objDto.getIdCarro());
-        Cliente obj = new Cliente(objDto.getId(), objDto.getNome(), objDto.getDataDeNascimento(), objDto.getCpfOuCnpj(), objDto.getEmail(), objDto.getContato(), objDto.getEndereco(), veiculo);
+        Cliente obj = new Cliente();
+        obj.setId(id);
+        obj.setNome(objDto.getNome());
+        obj.setDataDeNascimento(objDto.getDataDeNascimento());
+        obj.setCpfOuCnpj(objDto.getCpfOuCnpj());
+        obj.setEmail(objDto.getEmail());
+        obj.setContato(objDto.getContato());
+        obj.setEndereco(objDto.getEndereco());
+        obj.setVeiculo(veiculo);
         obj = clienteRepository.save(obj);
         return obj;
     }

@@ -32,7 +32,7 @@ public class ClienteController {
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     public ResponseEntity<Void> update(@PathVariable Long id, @RequestBody ClienteDTO objDto) {
-        Cliente obj = clienteService.update(objDto);
+        Cliente obj = clienteService.update(objDto, id);
         return ResponseEntity.noContent().build();
     }
 
