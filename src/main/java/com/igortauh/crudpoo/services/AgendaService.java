@@ -43,4 +43,9 @@ public class AgendaService {
         obj = agendaRepository.save(obj);
         return obj;
     }
+
+    public void delete(Long id) {
+        find(id);
+        agendaRepository.deleteById(id);
+    }
 }

@@ -35,4 +35,10 @@ public class AgendaController {
         Agenda obj = agendaService.update(objDto, id);
         return ResponseEntity.noContent().build();
     }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+        agendaService.delete(id);
+        return ResponseEntity.noContent().build();
+    }
 }
