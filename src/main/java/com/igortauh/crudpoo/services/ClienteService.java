@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -27,6 +28,10 @@ public class ClienteService {
                 () -> new ObjectNotFoundException("Objeto não encontrado! Id: " + id
                 + ", Tipo: " + Cliente.class.getName())
         );
+    }
+
+    public List<Cliente> findAll() {
+        return clienteRepository.findAll();
     }
 
     public Cliente insert(ClienteDTO objDto) {
