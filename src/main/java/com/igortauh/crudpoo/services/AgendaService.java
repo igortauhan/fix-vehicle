@@ -8,6 +8,7 @@ import com.igortauh.crudpoo.services.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -25,6 +26,10 @@ public class AgendaService {
                 () -> new ObjectNotFoundException("Objeto não encontrado! Id: " + id
                 + ", Tipo: " + Agenda.class.getName())
         );
+    }
+
+    public List<Agenda> findAll() {
+        return agendaRepository.findAll();
     }
 
     public Agenda insert(AgendaDTO objDto) {
