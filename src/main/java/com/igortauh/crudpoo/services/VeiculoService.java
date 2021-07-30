@@ -6,6 +6,7 @@ import com.igortauh.crudpoo.services.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -20,6 +21,10 @@ public class VeiculoService {
                 () -> new ObjectNotFoundException("Objeto não encontrado! Id: " + id
                 + ", Tipo: " + Veiculo.class.getName())
         );
+    }
+
+    public List<Veiculo> findAll() {
+        return veiculoRepository.findAll();
     }
 
     public Veiculo insert(Veiculo obj) {

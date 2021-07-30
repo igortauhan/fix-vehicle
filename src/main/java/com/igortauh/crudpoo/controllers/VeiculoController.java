@@ -1,5 +1,6 @@
 package com.igortauh.crudpoo.controllers;
 
+import com.igortauh.crudpoo.dto.VeiculoNewDTO;
 import com.igortauh.crudpoo.entities.Veiculo;
 import com.igortauh.crudpoo.services.VeiculoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import java.net.URI;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(value = "/veiculos")
@@ -23,6 +25,13 @@ public class VeiculoController {
     public ResponseEntity<Veiculo> find(@PathVariable Long id) {
         Veiculo obj = veiculoService.find(id);
         return ResponseEntity.ok().body(obj);
+    }
+
+    @RequestMapping(method = RequestMethod.GET)
+    public ResponseEntity<List<VeiculoNewDTO>> findAll() {
+        List<Veiculo> list = veiculoService.findAll();
+        List<VeiculoNewDTO> listDto = list.stream().map(obj -> new VeiculoNewDTO(obj)).collect(Collectors.toList());
+        return ResponseEntity.ok().body(listDto);
     }
 
     @RequestMapping(method = RequestMethod.POST)
