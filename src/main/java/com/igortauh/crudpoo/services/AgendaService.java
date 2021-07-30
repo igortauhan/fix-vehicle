@@ -4,6 +4,7 @@ import com.igortauh.crudpoo.dto.AgendaDTO;
 import com.igortauh.crudpoo.entities.Agenda;
 import com.igortauh.crudpoo.entities.Cliente;
 import com.igortauh.crudpoo.repositories.AgendaRepository;
+import com.igortauh.crudpoo.services.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,7 +21,10 @@ public class AgendaService {
 
     public Agenda find(Long id) {
         Optional<Agenda> obj = agendaRepository.findById(id);
-        return obj.orElse(null);
+        return obj.orElseThrow(
+                () -> new ObjectNotFoundException("Objeto não encontrado! Id: " + id
+                + ", Tipo: " + Agenda.class.getName())
+        );
     }
 
     public Agenda insert(AgendaDTO objDto) {

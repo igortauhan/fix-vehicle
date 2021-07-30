@@ -4,6 +4,7 @@ import com.igortauh.crudpoo.dto.ClienteDTO;
 import com.igortauh.crudpoo.entities.Cliente;
 import com.igortauh.crudpoo.entities.Veiculo;
 import com.igortauh.crudpoo.repositories.ClienteRepository;
+import com.igortauh.crudpoo.services.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,7 +23,10 @@ public class ClienteService {
 
     public Cliente find(Long id) {
         Optional<Cliente> obj = clienteRepository.findById(id);
-        return obj.orElse(null);
+        return obj.orElseThrow(
+                () -> new ObjectNotFoundException("Objeto não encontrado! Id: " + id
+                + ", Tipo: " + Cliente.class.getName())
+        );
     }
 
     public Cliente insert(ClienteDTO objDto) {

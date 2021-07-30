@@ -2,6 +2,7 @@ package com.igortauh.crudpoo.services;
 
 import com.igortauh.crudpoo.entities.Veiculo;
 import com.igortauh.crudpoo.repositories.VeiculoRepository;
+import com.igortauh.crudpoo.services.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +16,10 @@ public class VeiculoService {
 
     public Veiculo find(Long id) {
         Optional<Veiculo> obj = veiculoRepository.findById(id);
-        return obj.orElse(null);
+        return obj.orElseThrow(
+                () -> new ObjectNotFoundException("Objeto não encontrado! Id: " + id
+                + ", Tipo: " + Veiculo.class.getName())
+        );
     }
 
     public Veiculo insert(Veiculo obj) {
