@@ -33,8 +33,8 @@ public class CrudpooApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception{
 
-		Veiculo v1 = new Veiculo(null, 2, "Corolla", 2016, "Preto", 0.0, 70000.0, "ABC-1231");
-		Veiculo v2 = new Veiculo(null, 3, "Civic", 2016, "Prata", 0.0, 100000.0, "ABC-1232");
+		Veiculo v1 = new Veiculo(null, "Corolla", 2016, "Preto", 0.0, 70000.0, "ABC-1231");
+		Veiculo v2 = new Veiculo(null, "Civic", 2016, "Prata", 0.0, 100000.0, "ABC-1232");
 		veiculoRepository.saveAll(Arrays.asList(v1, v2));
 
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");

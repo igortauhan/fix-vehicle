@@ -1,8 +1,10 @@
 package com.igortauh.crudpoo.entities;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
+import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 @Entity
@@ -15,23 +17,29 @@ public class Veiculo implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    @Transient
-    private Integer quantidade;
+    @NotEmpty(message = "Campo obrigatório")
+    @Length(max = 50, message = "O nome do modelo não deve ter mais de 50 caracteres")
     private String modelo;
+
+    @NotNull(message = "O ano não pode ser nulo")
     private Integer ano;
+
+    @NotEmpty(message = "Campo obrigatório")
     private String cor;
+
     private Double kilometragem;
+
+    @NotNull(message = "O valor não pode ser nulo")
     private Double valor;
+
     private String placa;
 
     public Veiculo() {
 
     }
 
-    public Veiculo(Long id, Integer quantidade, String modelo, Integer ano, String cor, Double kilometragem, Double valor, String placa) {
+    public Veiculo(Long id, String modelo, Integer ano, String cor, Double kilometragem, Double valor, String placa) {
         this.id = id;
-        this.quantidade = quantidade;
         this.modelo = modelo;
         this.ano = ano;
         this.cor = cor;
@@ -46,14 +54,6 @@ public class Veiculo implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Integer getQuantidade() {
-        return quantidade;
-    }
-
-    public void setQuantidade(Integer quantidade) {
-        this.quantidade = quantidade;
     }
 
     public String getModelo() {
