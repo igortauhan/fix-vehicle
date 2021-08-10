@@ -2,6 +2,7 @@ package com.igortauh.crudpoo.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 public class AgendaDTO {
@@ -9,8 +10,10 @@ public class AgendaDTO {
     private Long id;
 
     @JsonFormat(pattern = "dd/MM/yyyy")
+    @NotNull(message = "Forneça uma data de agendamento")
     private Date dataDeAgendamento;
 
+    @NotNull(message = "O Id do cliente não pode estar vazio")
     private Long clienteId;
 
     public AgendaDTO() {
