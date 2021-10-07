@@ -4,6 +4,7 @@ import com.igortauh.crudpoo.dto.AgendaDTO;
 import com.igortauh.crudpoo.dto.AgendaNewDTO;
 import com.igortauh.crudpoo.entities.Agenda;
 import com.igortauh.crudpoo.services.AgendaService;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,12 +22,14 @@ public class AgendaController {
     @Autowired
     private AgendaService agendaService;
 
+    @ApiOperation(value = "Busca por ID")
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ResponseEntity<Agenda> find(@PathVariable Long id) {
        Agenda obj = agendaService.find(id) ;
        return ResponseEntity.ok().body(obj);
     }
 
+    @ApiOperation(value = "Retorna todos os agendamentos")
     @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<List<AgendaNewDTO>> findAll() {
         List<Agenda> list = agendaService.findAll();
@@ -34,6 +37,7 @@ public class AgendaController {
         return ResponseEntity.ok().body(listDto);
     }
 
+    @ApiOperation(value = "Insere um agendamento")
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<Void> insert(@Valid @RequestBody AgendaDTO objDto) {
         Agenda obj = agendaService.insert(objDto);
@@ -41,12 +45,14 @@ public class AgendaController {
         return ResponseEntity.created(uri).build();
     }
 
+    @ApiOperation(value = "Atualiza um agendamento")
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     public ResponseEntity<Void> update(@Valid @RequestBody AgendaDTO objDto, @PathVariable Long id) {
         Agenda obj = agendaService.update(objDto, id);
         return ResponseEntity.noContent().build();
     }
 
+    @ApiOperation(value = "Deleta um agendamento")
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         agendaService.delete(id);

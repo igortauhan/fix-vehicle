@@ -4,6 +4,7 @@ import com.igortauh.crudpoo.dto.ClienteDTO;
 import com.igortauh.crudpoo.dto.ClienteNewDTO;
 import com.igortauh.crudpoo.entities.Cliente;
 import com.igortauh.crudpoo.services.ClienteService;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,12 +22,14 @@ public class ClienteController {
     @Autowired
     private ClienteService clienteService;
 
+    @ApiOperation(value = "Busca por ID")
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ResponseEntity<Cliente> find(@PathVariable Long id) {
         Cliente obj = clienteService.find(id);
         return ResponseEntity.ok().body(obj);
     }
 
+    @ApiOperation(value = "Retorna todos os clientes")
     @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<List<ClienteNewDTO>> findAll() {
         List<Cliente> list = clienteService.findAll();
@@ -34,6 +37,7 @@ public class ClienteController {
         return ResponseEntity.ok().body(listDto);
     }
 
+    @ApiOperation(value = "Insere um cliente")
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<Void> insert(@Valid @RequestBody ClienteDTO objDto) {
         Cliente obj = clienteService.insert(objDto);
@@ -41,12 +45,14 @@ public class ClienteController {
         return ResponseEntity.created(uri).build();
     }
 
+    @ApiOperation(value = "Atualiza um cliente")
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     public ResponseEntity<Void> update(@PathVariable Long id, @Valid @RequestBody ClienteDTO objDto) {
         Cliente obj = clienteService.update(objDto, id);
         return ResponseEntity.noContent().build();
     }
 
+    @ApiOperation(value = "Deleta um cliente")
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         clienteService.delete(id);
