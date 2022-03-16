@@ -1,2 +1,13 @@
-# vehicle_fix_scheduling
-Adaptação de um trabalho da faculade feito por mim em Java para Springboot.
+# fix-vehicle
+
+Projeto feito em Spring Boot para estudos.
+
+Stack:
+
+- Java
+- JPA
+- Hibernate
+
+Possui:
+
+- Relacionamentos muitos para um
